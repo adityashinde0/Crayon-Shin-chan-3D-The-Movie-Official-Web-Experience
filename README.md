@@ -8,6 +8,7 @@
 [![Vite](https://img.shields.io/badge/Vite-8.3-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38bdf8?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Motion](https://img.shields.io/badge/Motion-12.2-ff0055?style=for-the-badge&logo=framer&logoColor=white)](https://motion.dev/)
+[![Cinema Dark Mode](https://img.shields.io/badge/Theme-Cinema_Dark_%26_Light-10b981?style=for-the-badge)](README.md)
 [![License](https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge)](LICENSE)
 
 **An ultra-modern, cinematic, interactive promotional web experience inspired by the 3D animated theatrical world of Crayon Shin-chan.**
@@ -22,32 +23,36 @@
 
 The **Crayon Shin-chan 3D Official Experience** is a high-performance, responsive single-page web application engineered to celebrate the theatrical release of *Crayon Shin-chan 3D The Movie*. 
 
-Built with **React 19**, **Vite**, **TypeScript**, and **Tailwind CSS v4**, the application delivers a studio-grade interactive experience featuring smooth typography, dynamic micro-interactions, an in-browser Web Audio synthesizer, full character showcases with interactive holographic reticles, playable arcade mini-games, and a living 3D cinema stage.
+Built with **React 19**, **Vite**, **TypeScript**, and **Tailwind CSS v4**, the application delivers a studio-grade interactive experience featuring smooth typography, dynamic micro-interactions, an in-browser Web Audio synthesizer, dual **Cinema Dark** and **Manga Light** modes, full character showcases with interactive holographic reticles, playable arcade mini-games, an audio oscilloscope, anime stardust cursor FX, and a living 3D cinema stage.
 
 ---
 
 ## ✨ Key Features
 
-### 🦸 1. Theatrical Character Showcase & Holographic Reticles
+### 🌓 1. Dual Mode Experience (Cinema Dark & Manga Light)
+- **Theatrical Cinema Dark Mode (Default)**: Deep obsidian (`#090a0f`) cinematic backdrops accented with character-tailored neon glow ribbons and sleek titanium controls.
+- **Manga Pop Light Mode**: Vibrant editorial layout paying homage to Japanese comic books and theatrical posters.
+- **Instant Switcher & Audio Chimes**: Toggle smoothly from the studio header, slide-out drawer, or floating bottom bar, backed by Web Audio API chimes and `localStorage` persistence.
+
+### 🦸 2. Theatrical Character Showcase & Holographic Reticles
 - **6 Full-Fledged Character Profiles**: Detailed profiles, Japanese voice line quotes, personality specs, and traits for **Shin-chan**, **Shiro**, **Action Kamen**, **Himawari**, **Buriburizaemon**, and **Toru Kazama**.
 - **Hero & Civilian Mode Switcher**: Instantly toggle between Shin-chan's standard kindergarten attire and his cosmic superhero outfit.
 - **Interactive Holographic Reticle Points**: Clickable inspection nodes positioned across character models reveal lore tidbits, costume schematics, and comedic commentary.
 
-### 🕹️ 2. Kasukabe Arcade (Playable Mini-Games)
-- **Butt-Alien Telekinesis**: Tap to charge psychic energy and bounce incoming cosmic rocks to score combos.
-- **Chocobi Crunch Catch**: Catch falling boxes of Shin-chan's favorite snack before time runs out.
-- **Action Beam Showdown**: Rapid-tap beam clashing battle against invaders with dynamic power bars.
-- **Zero-Dependency Web Audio Synth**: Custom synthesized sound effects (chimes, clicks, power blasts, giggles) powered entirely by the native HTML5 Web Audio API.
+### 🕹️ 3. Kasukabe Arcade (Playable Mini-Games)
+- **Chocobi Bonanza Snack Catch**: Catch falling boxes of Shin-chan's favorite snack, dodge green peppers, grab Action Stars, and build up fever combos!
+- **Arcade CRT Shader & Canvas FX**: Toggleable authentic CRT scanline shader with particle bursts and floating score text.
+- **Zero-Dependency Web Audio Synth**: Custom synthesized sound effects (chimes, clicks, power blasts, giggles, barks) powered entirely by the native HTML5 Web Audio API.
 
-### 🎬 3. Living 3D Cinema & Video Stage
+### 🎬 4. Living 3D Cinema & Video Stage
 - Seamless looping 3D character walk animation showcasing stylized CGI physics.
 - Theatrical multi-trailer carousel modal with official video playback and HD poster previews.
 - Fullscreen cinema mode and immersive dark backdrop styling.
 
-### 🎟️ 4. Box Office & Fan Downloads
+### 🎟️ 5. Box Office, Fan Wallpapers & Interactive HUD
 - **Interactive Ticket Finder**: Search nearby theaters by ZIP / postal code with live seat availability simulation and calendar showtime selectors.
 - **Wallpaper Download Center**: High-resolution wallpaper generator supporting both 16:9 widescreen desktop and 9:16 mobile formats.
-- **Studio Navigation Drawer & Slide Spy**: Fixed HUD floating character dock with audio toggles, slide mode jump shortcuts, and legal disclaimers.
+- **Floating HUD Dock & Live Audio Oscilloscope**: Persistent bottom character switcher with real-time waveform visualizer, audio toggle, and anime stardust cursor FX.
 
 ---
 
@@ -87,7 +92,7 @@ Built with **React 19**, **Vite**, **TypeScript**, and **Tailwind CSS v4**, the 
 ## 📁 Project Structure
 
 ```text
-disney-big-hero-6-official-experience/
+crayon-shinchan-3d-experience/
 ├── public/
 │   ├── images/
 │   │   ├── characters/          # High-resolution character cutouts (Shin-chan, Shiro, etc.)
@@ -95,6 +100,7 @@ disney-big-hero-6-official-experience/
 │   └── videos/
 │       └── shinchan_3d_walk.mp4 # 3D looping character walking sequence
 ├── docs/
+│   ├── ARCHITECTURE.md          # Technical architecture & subsystem flows
 │   └── screenshots/             # Showcase preview images used in documentation
 ├── src/
 │   ├── components/
@@ -105,14 +111,16 @@ disney-big-hero-6-official-experience/
 │   │   │   ├── TicketModal.tsx           # Box office ticket search simulation
 │   │   │   ├── TrailerModal.tsx          # Video player with multi-trailer carousel
 │   │   │   └── WallpaperModal.tsx        # High-res poster & wallpaper downloads
+│   │   ├── AudioVisualizer.tsx           # Real-time audio waveform oscilloscope
 │   │   ├── CharacterSection.tsx          # Full-height character showcase section
-│   │   ├── CharacterSelectorBar.tsx      # Floating bottom dock with sound & modal triggers
+│   │   ├── CharacterSelectorBar.tsx      # Floating bottom dock with sound, mode & FX toggles
 │   │   ├── GamesSection.tsx              # Kasukabe Arcade interactive mini-games
-│   │   ├── Header.tsx                    # Studio header with movie banner & ticker
+│   │   ├── Header.tsx                    # Studio header with banner, theme switch & ticker
 │   │   ├── LivingCinemaSection.tsx       # Embedded continuous 3D video display
 │   │   ├── MovieBanner.tsx               # Animated movie marquee banner
 │   │   ├── NavigationDrawer.tsx          # Right-side overlay quick-navigation menu
-│   │   └── ReticleTarget.tsx             # Interactive pulsing inspection points
+│   │   ├── ReticleTarget.tsx             # Interactive pulsing inspection points
+│   │   └── SparkleCursor.tsx             # Anime stardust particle cursor effect
 │   ├── data/
 │   │   └── characters.ts                 # Character stats, quotes, lore, reticle coordinates
 │   ├── utils/
@@ -140,8 +148,8 @@ disney-big-hero-6-official-experience/
 
 1. **Clone or Navigate to the Repository**:
    ```bash
-   git clone https://github.com/<your-username>/<your-repo-name>.git
-   cd <your-repo-name>
+   git clone https://github.com/adityashinde0/Crayon-Shin-chan-3D-The-Movie-Official-Web-Experience.git
+   cd Crayon-Shin-chan-3D-The-Movie-Official-Web-Experience
    ```
 
 2. **Install Dependencies**:
